@@ -1,3 +1,2 @@
 # CivKraft-M1
-Loïc, ba......ue.
--Juju
+Un projet de malade, avec comme chef de projet Vincent, alias la eugnirtlaB.
