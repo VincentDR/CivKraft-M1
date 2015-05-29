@@ -45,5 +45,4 @@ public class DefinePath {
 	public static String pathToItemPheromones = pathToSimulation + "/" + itemPheromones;
 	public static String pathToObjets = pathToSimulation + "/" + objets;
 	public static String pathToTerrains = pathToSimulation + "/" + terrains;
-
 }

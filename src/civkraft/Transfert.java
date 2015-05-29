@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import turtlekit.kernel.Patch;
+import turtlekit.viewer.AbstractGridViewer;
 import madkit.kernel.AbstractAgent;
 import madkit.kernel.Probe;
 import civilisation.Civilisation;
@@ -22,18 +24,21 @@ import civilisation.world.Terrain;
 import civilisation.world.World;
 import civilisation.world.WorldViewer;
 
+
+@SuppressWarnings("serial")
 public class Transfert implements Serializable {
 	
 	//Regroupe l'ensemble des données à envoyer
-
+	
+	
 	private String choix;
-	
-	
 	private int hauteurSimu;
 	private int largeurSimu;
 	
+	// Matrice de pixel à envoyer
+	// TODO A serialiser
+	private Patch[] grille;
 
-	
 	/**
 	 * Méthodes
 	 */
@@ -68,6 +73,13 @@ public class Transfert implements Serializable {
 	 public void setLargeurSimu(int lS){
 		 largeurSimu = lS;
 	 }
+	 
+	 public Patch[] getGrille() {
+			return grille;
+		}
 
+	public void setGrille(Patch[] grille) {
+		this.grille = grille;
+	}
 }
 

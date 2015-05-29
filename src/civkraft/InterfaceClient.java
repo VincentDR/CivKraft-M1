@@ -81,12 +81,10 @@ public class InterfaceClient extends JFrame implements MouseListener {
 		listeServeurs = new JPanel();
 		
 		explications = new JLabel(I18nList.CheckLang("<html>Recherche de Serveurs Civkraft dans le réseau local ...<br>Vous pouvez lancer un serveur en choisissant l'option héberger partie"),JLabel.CENTER);
-
 		Font font = new Font("Arial", Font.BOLD, 12);
 		explications.setFont(font);
 		explications.setVisible(true);
 		
-
 		Object[] data = {I18nList.CheckLang("Recherche...")};
 
 		serveurs = new JComboBox(data);
@@ -125,7 +123,6 @@ public class InterfaceClient extends JFrame implements MouseListener {
 	public void actualiser(List<AgentAddress> list){
 
 		Object[] data = {I18nList.CheckLang("Recherche...")};
-
 		serveursObtenus = null;
 		if(list != null){
 			serveursObtenus = list;
@@ -135,12 +132,10 @@ public class InterfaceClient extends JFrame implements MouseListener {
 				//data[i][1] = serveursObtenus.get(i).getAgentNetworkID();
 				data[i] = serveursObtenus.get(i);//.getSimpleAgentNetworkID();
 			}
-
 			explications.setText(I18nList.CheckLang("<html>Vous êtes actuellement connecté au serveur civkraft suivant.<br>En attente du lancement de la partie côté serveur...</html>"));
 			
 		}else{
 			explications.setText(I18nList.CheckLang("<html>Rechercher de Serveurs Civkraft dans le réseau local ...<br>Vous pouvez lancer un serveur en choisissant l'option héberger partie"));
-
 		}
 		listeServeurs.remove(serveurs);
 		//listeServeurs.revalidate();

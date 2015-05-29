@@ -50,7 +50,6 @@ import turtlekit.agr.TKOrganization;
 import turtlekit.gui.CudaMenu;
 import turtlekit.gui.toolbar.TKToolBar;
 import turtlekit.kernel.TKScheduler;
-
 import turtlekit.kernel.Turtle;
 import turtlekit.viewer.TKDefaultViewer;
 import turtlekit.kernel.Patch;
@@ -61,7 +60,6 @@ import turtlekit.pheromone.Pheromone;
  * @author DTEAM
  * @version 1.0 - 2/2013
 */
-
 public class WorldViewer extends TKDefaultViewer implements Serializable
 {
 	
@@ -88,7 +86,6 @@ public class WorldViewer extends TKDefaultViewer implements Serializable
 		cellSize = 5;
 		instance = this;
 		this.getDisplayPane().addMouseListener(new WorldMouseListener(this));
-		
 	}
 	
 	protected void activate() {	
@@ -218,7 +215,6 @@ public class WorldViewer extends TKDefaultViewer implements Serializable
 	}
 	
 	@Override
-
 	public void paintTurtle(Graphics g,Turtle t,int x,int y) {
 		paintOneTurtle( g, t, x, y, true);
 	}

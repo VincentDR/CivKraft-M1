@@ -29,14 +29,11 @@ import madkit.message.ObjectMessage;
 
 import madkit.simulation.probe.SingleAgentProbe;
 
-
-
 public class Client extends TKLauncher{
 	
 	
 	private InterfaceClient iC;
 	private WorldViewerClient wVC;
-
 		
 	protected void activate() {
 		setLogLevel(Level.OFF);
@@ -63,8 +60,7 @@ public class Client extends TKLauncher{
 			 
 			 //Reception World
 			 if(!this.isMessageBoxEmpty()){			
-				 
-				 
+ 
 				// System.out.println("Boite non vide");
 
 				 ObjectMessage<Transfert> om = (ObjectMessage<Transfert>) this.nextMessage();
@@ -75,7 +71,8 @@ public class Client extends TKLauncher{
 					 String choix = t.getChoix();
 					 if(choix.equals(DefineConstants.LANCER_VIEWER) && wVC == null){
 						 System.out.println("lancement wvc");
-						 wVC = new WorldViewerClient();
+
+						 wVC = new WorldViewerClient(t.getLargeurSimu(), t.getHauteurSimu(), t.getGrille());
 						 this.launchAgent(wVC);
 					 }
 					

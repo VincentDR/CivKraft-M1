@@ -18,7 +18,6 @@ import civilisation.world.World;
 
 public class Civilisation implements Cloneable, Serializable{
 	
-	
 	static ArrayList<Civilisation> listeCiv = new ArrayList<Civilisation>();
 	
 	/**

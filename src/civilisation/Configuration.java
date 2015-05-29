@@ -26,7 +26,6 @@ import civilisation.world.Terrain;
  * @author DTEAM
  * @version 1.01 - 2/2013
 */
-
 public class Configuration{
 
 	public static String versionNumber = "1.90";

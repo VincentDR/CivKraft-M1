@@ -26,6 +26,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -44,6 +45,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import I18n.I18nList;
+
 
 import madkit.kernel.Agent;
 import madkit.kernel.AgentAddress;
@@ -92,6 +94,7 @@ import civilisation.world.World;
 import civilisation.world.WorldViewer;
 import debugUtils.MultiOutputStream;
 import turtlekit.kernel.TKLauncher;
+
 
 import turtlekit.mle.MLEEnvironment;
 import turtlekit.viewer.PheromoneViewer;
@@ -241,6 +244,7 @@ public class CivLauncher extends TKLauncher {
 					}else{
 						launcher = Client.class.getName();
 					}					
+
 				}else{
 					network = "false";
 					launcher = CivLauncher.class.getName();
@@ -252,6 +256,7 @@ public class CivLauncher extends TKLauncher {
 						public static final int SCRATCH_OPTION = 4;
 						private JPanel accessory = new JPanel();
 						private JButton scratch = new JButton(I18nList.CheckLang("Scratch"));
+
 						public MCFileChooser()
 						{
 							super();
@@ -343,7 +348,6 @@ public class CivLauncher extends TKLauncher {
 		
 	}
 	
-
 	public void printStartMessage() {
 		//Show version
 		System.out.println("\n\t---------------------------------------" +
@@ -385,6 +389,5 @@ public class CivLauncher extends TKLauncher {
 		f.delete();
 		temp.renameTo(f);
 	}
-
 }
 

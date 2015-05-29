@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import civilisation.constant.MCConstant;
-
 import civilisation.group.GroupModel;
 import civilisation.individu.cognitons.LienCogniton;
 import civilisation.individu.cognitons.LienPlan;
@@ -70,6 +69,7 @@ public class SchemaCognitif implements Cloneable, Serializable {
 	    SchemaCognitif sc = null;
     	// On récupère l'instance à renvoyer par l'appel de la 
       	// méthode super.clone()
+
       	sc = (SchemaCognitif) super.clone();
 	    // On clone les attributs cloneable
       	if(initiatePlan != null){
@@ -102,6 +102,7 @@ public class SchemaCognitif implements Cloneable, Serializable {
       //	System.out.println("J'ai fini de cloner plans");
       //	System.out.println("Plans de bases : " + this.plans);
       //	System.out.println("Plans clonés : " + plansClones);      	
+
       	
       	//System.out.println(this.groups.size());
       	ArrayList<GroupModel> groupsClones = new ArrayList<GroupModel>();
@@ -121,7 +122,6 @@ public class SchemaCognitif implements Cloneable, Serializable {
       	//System.out.println("Groups de bases : " + this.cloudCognitons);
       	//System.out.println("Groups clonés : " + cloudCognitonsClones);
 
-      	
       	
       	
       	//And here we go for the fucking liens
@@ -163,7 +163,6 @@ public class SchemaCognitif implements Cloneable, Serializable {
       	//System.out.println("J'ai fini de cloner cognitons");
       //	System.out.println("Cognitons de bases : " + this.cognitons);
      // 	System.out.println("Cognitons clonés : " + cognitonsClones);
-
       	
     	ArrayList<TypeCogniton> startingCognitonsClones = new ArrayList<TypeCogniton>();
       	for(int i=0; i<this.startingCognitons.size(); i++){
@@ -172,8 +171,8 @@ public class SchemaCognitif implements Cloneable, Serializable {
       	
       	//System.out.println("J'ai fini de cloner startingCognitons");
       	//System.out.println("Starting : " + this.startingCognitons);
-
       	//System.out.println("Starting clonés : " + startingCognitonsClones);
+
       	
       	
       	
@@ -231,7 +230,7 @@ public class SchemaCognitif implements Cloneable, Serializable {
 	public void setStartingCognitons(ArrayList<TypeCogniton> s) {
 		this.startingCognitons = s;
 	}
-	
+
 	public void setAttributesTrigerringValues(HashMap<String,ArrayList<Object[]>> a){
 		attributesTrigerringValues = a;
 	}
@@ -381,7 +380,7 @@ public class SchemaCognitif implements Cloneable, Serializable {
 	{
 		return getNom();
 	}
-	
+
 	public ArrayList<String> getAttributesNames(){
 		return attributesNames;
 	}

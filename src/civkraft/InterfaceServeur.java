@@ -49,7 +49,6 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 
 	private JTable clients = new JTable();
 	private List<AgentAddress> clientsObtenus;
-
 	private JLabel explications = new JLabel();
 	
 	private JPanel boutons = new JPanel();
@@ -58,6 +57,9 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 	
 	private Font fontTitre = new Font("Colibri", Font.BOLD, 36);
 	private Semaphore sema;
+
+	private Boolean tempsReel = false;
+
 	
 	public InterfaceServeur(Semaphore s, int width, int height, Serveur d){
 		sema = s;
@@ -95,6 +97,7 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 		Object[][] data = {{I18nList.CheckLang("Emplacement Vide"), I18nList.CheckLang("Recherche en cours...")},
 	            {I18nList.CheckLang("Emplacement Vide"), I18nList.CheckLang("Recherche en cours...")}};
 		String[] columnNames = {I18nList.CheckLang("Kernel"), I18nList.CheckLang("Nom")};
+
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		
 
@@ -136,6 +139,7 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 
 		Object[][] data = {{I18nList.CheckLang("Emplacement Vide"), I18nList.CheckLang("Recherche en cours...")},
 	            {I18nList.CheckLang("Emplacement Vide"), I18nList.CheckLang("Recherche en cours...")}};
+
 		clientsObtenus = null;
 		if(list != null){
 			clientsObtenus = list;
@@ -149,6 +153,7 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 			}	
 		}
 		String[] columnNames = {I18nList.CheckLang("Kernel"), I18nList.CheckLang("Nom")};
+
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		acceuil.remove(clients);
 		acceuil.revalidate();
@@ -159,7 +164,15 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 		acceuil.revalidate();	
 	}
 	
-	
+	public Boolean getTempsReel() {
+		return tempsReel;
+	}
+
+
+	public void setTempsReel(Boolean tempsReel) {
+		this.tempsReel = tempsReel;
+	}
+
 	public void envoiViewers(List<AgentAddress> clients){
 		
 		if(clients != null && clients.size() > 0){
@@ -178,26 +191,26 @@ public class InterfaceServeur extends JFrame implements MouseListener {
 				//Transfert
 				Transfert t = new Transfert();
 				t.setChoix(DefineConstants.LANCER_VIEWER);
-				t.setHauteurSimu(WorldViewer.getInstance().getHeight());
-				t.setLargeurSimu(WorldViewer.getInstance().getWidth());
+				t.setHauteurSimu(WorldViewer.getInstance().getDisplayPane().getHeight());
+				t.setLargeurSimu(WorldViewer.getInstance().getDisplayPane().getWidth());
+				//WorldViewer.getInstance().getDisplayPane().getPreferredSize();
+				t.setGrille(WorldViewer.getInstance().getPatchGrid());
+				
 				
 				ObjectMessage<Transfert> om = new ObjectMessage<Transfert>(t);
-				dad.broadcastMessage(DefineConstants.RESEAU, DefineConstants.GROUPE_RESEAU, DefineConstants.ROLE_CLIENT, om);
-			
-			
+				dad.broadcastMessage(DefineConstants.RESEAU, DefineConstants.GROUPE_RESEAU, DefineConstants.ROLE_CLIENT, om);	
 		}else{
 			System.out.println("Il n'y a pas de client connecté.");
 		}
 	}
 	
-
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource().equals(connection)){
 
+			this.setTempsReel(true);
 			envoiViewers(clientsObtenus);			
-
 		}
 		if(arg0.getSource().equals(annuler)){
 			System.out.println("Exit");

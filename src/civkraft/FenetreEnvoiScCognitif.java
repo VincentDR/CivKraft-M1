@@ -48,6 +48,7 @@ public class FenetreEnvoiScCognitif extends JFrame implements MouseListener{
 		listeSchemas = new JPanel();
 		
 		explications = new JLabel(I18nList.CheckLang("<html><center>Veuillez sélectionnez le schéma cognitif <br> que vous désirez envoyer au serveur d'adresse <br>") + ka +"</center></html>",JLabel.CENTER);
+
 		Font font = new Font("Arial", Font.BOLD, 12);
 		explications.setFont(font);
 		explications.setVisible(true);
@@ -71,6 +72,7 @@ public class FenetreEnvoiScCognitif extends JFrame implements MouseListener{
 		annuler.addMouseListener((MouseListener) this);
 		
 		envoiScCognitif = new JButton(I18nList.CheckLang("Envoi Schéma Cognitif"));
+
 		envoiScCognitif.addMouseListener((MouseListener) this);
 		
 		boutons.add(annuler, BorderLayout.CENTER);

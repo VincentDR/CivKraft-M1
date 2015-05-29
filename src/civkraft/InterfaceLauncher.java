@@ -3,7 +3,6 @@ package civkraft;
 import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
-
 import java.awt.event.ActionEvent;
 
 import java.awt.event.MouseEvent;
@@ -13,7 +12,6 @@ import java.util.concurrent.Semaphore;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -45,7 +43,6 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 	private JPanel civkraftSuperPanel;
 	private Semaphore sema;
 	private int choix;
-	
 
 	protected JComboBox langBox;
 	protected JButton valider;
@@ -73,7 +70,6 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 		civkraftBoutonSolo.addMouseListener(this);
 		civkraftBoutonHeberger.addMouseListener(this);
 		civkraftBoutonRejoindre.addMouseListener(this);
-
 		//valider.addMouseListener(this);
 
 		
@@ -92,7 +88,6 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 		civkraftSuperPanel.add(civkraftPanelMulti, BorderLayout.CENTER);
 		civkraftSuperPanel.add(choixLang, BorderLayout.SOUTH);
 		
-		
 		this.add(civkraftSuperPanel, BorderLayout.CENTER);
 		this.setTitle("Metaciv");
 		this.setSize(360,180);
@@ -104,7 +99,7 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 		if(arg0.getSource().equals(civkraftBoutonSolo)){
 			
 			String s = langBox.getSelectedItem().toString();
-			I18nList.infoLang = s;
+			//I18nList.infoLang = s;
 			//System.out.println("actionPerdormed : "+ s);
 
 			this.dispose();			
@@ -113,11 +108,11 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 			sema.release();
 		}
 		if(arg0.getSource().equals(civkraftBoutonHeberger)){
-	
+
 			String s = langBox.getSelectedItem().toString();
-			I18nList.infoLang = s;
+			//I18nList.infoLang = s;
 			//System.out.println("actionPerdormed : "+ s);
-			
+	
 			this.dispose();
 			setChoix(2);
 			sema.release();
@@ -136,9 +131,9 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 		if(arg0.getSource().equals(civkraftBoutonRejoindre)){
 
 			String s = langBox.getSelectedItem().toString();
-			I18nList.infoLang = s;
+			//I18nList.infoLang = s;
 			//System.out.println("actionPerdormed : "+ s);
-			
+
 			this.dispose();
 			setChoix(3);
 			sema.release();
@@ -155,7 +150,6 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 			//InterfaceClient iC = new InterfaceClient(sema, 512, 256);
 			//iC.setVisible(true);
 		}
-
 		/*if(arg0.getSource().equals(valider)){
 			
 			String s = langBox.getSelectedItem().toString();
@@ -175,7 +169,7 @@ public class InterfaceLauncher extends JFrame implements MouseListener{
 	     System.out.println("getLang a recuperer : "+(String)valeur);
 	   	return valeur;
 	}
-	
+
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub

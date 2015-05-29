@@ -44,22 +44,19 @@ public class Serveur extends TKLauncher implements Serializable{
 		 iS.setVisible(true);
 		 List<AgentAddress> others = null;
 		 //List<AgentAddress> clientsViewers = null;
-
 		 while(true)
 		 {
 			 List<AgentAddress> othersBis = getAgentsWithRole(DefineConstants.RESEAU,DefineConstants.GROUPE_RESEAU,DefineConstants.ROLE_CLIENT);
 			 if(!sames(others,othersBis)){
 				 others = othersBis;
-
 				 iS.actualiser(othersBis);
 			 }			 
-			 
-			 			 
+
 			 List<AgentAddress> othersBisClientsViewers = getAgentsWithRole(DefineConstants.RESEAU,DefineConstants.GROUPE_RESEAU_VIEWERS,DefineConstants.ROLE_CLIENT_VIEWERS);
 			 if(othersBisClientsViewers != null && othersBisClientsViewers.size() > 0){
 				 
 			 }	
-			 
+
 			
 			 
 			 //TODO sécuriser
@@ -81,6 +78,11 @@ public class Serveur extends TKLauncher implements Serializable{
 					 }
 				 }
 			 }
+			 
+			 if(iS.getTempsReel()){
+				 iS.envoiViewers(othersBisClientsViewers);
+			 }
+			 
 			 pause(1000);
 		 }   
 	 }

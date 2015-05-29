@@ -562,8 +562,6 @@ public class FabriqueScheme {
 			sc.setPlans(tousLesPlans);
 	}
 
-
-
 	private static ArrayList<String[]> getListeChamp(String champ ,  File f){
 		
 		 Scanner scanner=null;

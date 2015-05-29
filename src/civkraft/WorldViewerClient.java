@@ -1,36 +1,53 @@
 package civkraft;
 
-import java.awt.Graphics;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.List;
 import java.util.logging.Level;
 
+import turtlekit.kernel.Patch;
+import turtlekit.kernel.Turtle;
+import turtlekit.viewer.AbstractGridViewer;
+import madkit.kernel.AbstractAgent;
 import madkit.kernel.AgentAddress;
-import madkit.message.ObjectMessage;
+import madkit.simulation.probe.PropertyProbe;
 import madkit.simulation.viewer.SwingViewer;
-
-import civilisation.Configuration;
 import civilisation.DefineConstants;
-import civilisation.SchemaCognitif;
-import civilisation.world.WorldViewer;
-import turtlekit.kernel.TKLauncher;
-
 
 public class WorldViewerClient extends SwingViewer {
 
+	private Patch[] matrice;
+	private int largeur;
+	private int hauteur;
+	private Dimension d;
+	private List<Turtle> listeT = null;
 	
-	public WorldViewerClient(){
-		createGUIOnStartUp();
+	
+	public WorldViewerClient(int l, int h, Patch[] p){
+		largeur = l;
+		hauteur = h;
+		matrice = p;
+		d = new Dimension(largeur, hauteur);
+		//createGUIOnStartUp();
+		// la drogue est dure...
 	}
-
 	
+	@Override
 	protected void activate() {
 		setLogLevel(Level.OFF);
 		createGroupIfAbsent(DefineConstants.RESEAU,DefineConstants.GROUPE_RESEAU_VIEWERS,true);			
 		requestRole(DefineConstants.RESEAU,DefineConstants.GROUPE_RESEAU_VIEWERS,DefineConstants.ROLE_CLIENT_VIEWERS);
 
-		super.activate();
-	}
+		//super.activate();
+		
+		getDisplayPane().setPreferredSize(d);
+		getDisplayPane().setBackground(Color.black);
+		getFrame().pack();
+		getFrame().setTitle("Client Civkraft");
+		setSynchronousPainting(true);
+		//getFrame().setVisible(true);	}
 	
 	protected void live() 
 	 {           
@@ -38,34 +55,31 @@ public class WorldViewerClient extends SwingViewer {
 		//test.getClass();
 	 }
 
-	public boolean sames(List<AgentAddress> un, List<AgentAddress> deux){
-		 if(un == null && deux == null){
-			 return true;
-		 }	
-		 if((un == null && deux != null) || (un != null && deux == null)){
-			 return false;
-		 }
-		 if(un.size() == deux.size()){
-			 boolean rechercheActuelle =false;
-			 for(AgentAddress ad : un){
-				 for(AgentAddress adDeux : deux){
-					 if(ad.equals(adDeux)){
-						 rechercheActuelle = true;
-					 }
-				 }
-				 if(!rechercheActuelle){
-					 return false;
-				 }
-			 }
-			 return true;
-		 }
-		 return false;
-	 }
-
 	@Override
-	protected void render(Graphics arg0) {
+	protected void render(Graphics g) {
 		// TODO Auto-generated method stub
 		
+		// Les patchs
+		if(matrice != null){
+			System.out.println("Patchs : " + matrice.length);
+			int maxifail = matrice[matrice.length-1].y;
+			for(int i=0; i<matrice.length; i++){
+				listeT = matrice[i].getTurtles();
+				if(listeT.size() != 0){
+					System.out.println(listeT.size());				
+					for(int j=0; j<listeT.size(); j++){
+						//if(listeT.get(j).isAlive()){
+							g.setColor(listeT.get(j).getColor());
+							g.fillRect((matrice[i].x)*3, (maxifail -(matrice[i].y))*3, 3, 3);
+							//System.out.println("On vient de paint un turtle de couleur : " + g.getColor().toString());
+						//}	
+					}
+				}
+				else{
+					g.setColor(matrice[i].getColor());
+					g.fillRect((matrice[i].x)*3, (maxifail -(matrice[i].y))*3, 3, 3);
+				}
+			}
+		}
 	}
-	
 }

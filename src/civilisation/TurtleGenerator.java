@@ -1,5 +1,7 @@
 package civilisation;
 
+import java.io.Serializable;
+
 import turtlekit.kernel.Turtle;
 
 
@@ -9,7 +11,8 @@ import turtlekit.kernel.Turtle;
  * @version 1.0 - 09/2013
 */
 
-public class TurtleGenerator extends Turtle{
+
+public class TurtleGenerator extends Turtle implements Serializable{
 
 	static TurtleGenerator turtleGenerator;
 	
